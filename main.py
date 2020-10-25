@@ -85,7 +85,7 @@ def shut_down():
   window.bye()
 
 def bake():
-  """Makes de pie chart"""
+  """Makes the pie chart"""
   cake.showturtle()
   cake_x_pos = (window.window_width() // 4) *-1
   cake.goto(cake_x_pos, -CAKE_RADIUS)
@@ -105,7 +105,7 @@ def bake():
   cake.sety(-LABEL_RADIUS)
   cake.color('#f0f0f0')
 
-  """Makes the names around the de pie"""
+  """Makes the names around the pie"""
   for label, fraction in results_tuple:
       cake.circle(LABEL_RADIUS, fraction * 360 / total / 2)
       cake.write(label, align="center", font=('Calibri', 20, 'normal'))
