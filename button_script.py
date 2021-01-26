@@ -1,17 +1,18 @@
 import codecs
+from tkinter import messagebox
 from tkinter import filedialog
 
 import str_helpers
 import show_results_script
 
 def load_chat_file():
-    chat_file = filedialog.askopenfilename()
-
-    if not chat_file: # If user press cancel or Escape
-        invalid_chat('cancel')
+    chat_file = filedialog.askopenfilename(filetypes=[('Archivos de Texto', '.txt')])
 
     return chat_file
 
+def wrong_file_format_alert():
+    message = "El archivo seleccionado no posee formato de chat de WhatsApp"
+    messagebox.showwarning(title="Hubo un problema", message=message)
 
 def calculate_msgs(chat_file):
     with codecs.open(chat_file, 'r', encoding='utf-8', errors='ignore') as f:
@@ -22,7 +23,16 @@ def calculate_msgs(chat_file):
 
 def button_action(window, start_button):
     chat_file = load_chat_file()
+    
+    if not chat_file:
+        return None # Cancels button_script's execution
+
     msgs_results = calculate_msgs(chat_file)
+
+    if not msgs_results:
+        wrong_file_format_alert()
+        return None # Cancels button_script's execution
+
     group_name = window.textinput(
     'Nombre de Grupo',
     'Ingrese un nombre para el GRUPO\n'
