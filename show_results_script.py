@@ -32,7 +32,7 @@ def show_results(msgs_result, group_name):
     ax.set_yticklabels(labels)
     ax.invert_yaxis()  # labels read top-to-bottom
     ax.set_xlabel('Mensajes')
-    ax.set_title('Gráfico de Barras')
+    ax.set_title(group_name)
 
 
     thismanager = plt.get_current_fig_manager()
