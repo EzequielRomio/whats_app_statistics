@@ -1,4 +1,4 @@
-# whats_app_statistics ![](images/favicon.ico)  
+# whats_app_statistics ![](images/logo.png)  
 
 _This app reads a chat file from a whatsapp group and shows the statistics of the user's messages_
 
