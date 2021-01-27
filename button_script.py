@@ -12,12 +12,30 @@ def load_chat_file():
 
 def wrong_file_format_alert():
     message = "El archivo seleccionado no posee formato de chat de WhatsApp"
-    messagebox.showwarning(title="Hubo un problema", message=message)
+    messagebox.showwarning(title="Ocurrió un problema", message=message)
 
 def calculate_msgs(chat_file):
     with codecs.open(chat_file, 'r', encoding='utf-8', errors='ignore') as f:
         msgs_result = str_helpers.line_reader(f)
     
+    return msgs_result
+
+
+def check_contact_list(msgs_result):
+    names_to_delete = []
+    
+    for name in msgs_result.keys():
+        if msgs_result[name] < 10:
+            answer = messagebox.askquestion(
+                title="Contactos dudosos", 
+                message="Es '{}' un contacto real del grupo?".format(name)
+            )
+            if answer == 'no':
+                names_to_delete.append(name)            
+
+    for name in names_to_delete:
+        del msgs_result[name]
+
     return msgs_result
 
 
@@ -33,6 +51,7 @@ def button_action(window, start_button):
         wrong_file_format_alert()
         return None # Cancels button_script's execution
 
+
     group_name = window.textinput(
     'Nombre de Grupo',
     'Ingrese un nombre para el GRUPO\n'
@@ -40,6 +59,9 @@ def button_action(window, start_button):
     
     if group_name is None: #if user press cancel or Escape
         group_name = 'Grupo sin nombre'
+
+
+    msgs_results = check_contact_list(msgs_results)
 
     sorted_msgs = sorted(msgs_results.items(), key=lambda x: x[1], reverse=True)
     
