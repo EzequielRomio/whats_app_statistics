@@ -2,7 +2,7 @@
 
 This app reads a chat file from a whatsapp group and shows the statistics of the user's messages
 
-![](/example.gif)
+![](/old_proyect/example.gif)
 
 Instructions:
  - Export the chat from any group of WhatsApp Messenger mobile app
