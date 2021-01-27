@@ -14,14 +14,18 @@ def join_up_smaller_values(msgs_results):
     names = ''
     value = 0
     result_list = []
+    low_percent_flag = False
+
     for ix in range(len(msgs_results)):
         if percents[ix] <= 5:
             names += msgs_results[ix][0] + '\n'
             value += msgs_results[ix][1]
+            low_percent_flag = True
         else: 
             result_list.append(msgs_results[ix])
-    
-    result_list.append((names, value))
+
+    if low_percent_flag:    
+        result_list.append((names, value))
 
     return result_list
 
