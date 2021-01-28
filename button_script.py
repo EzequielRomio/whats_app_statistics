@@ -35,7 +35,7 @@ def check_contact_list(msgs_result):
     for name in msgs_result.keys():
         if msgs_result[name] < 10:
             answer = messagebox.askquestion(
-                title="Contactos dudosos", 
+                title="Contacto dudoso", 
                 message="Es '{}' un contacto real del grupo?".format(name)
             )
             if answer == 'no':
