@@ -52,5 +52,5 @@ def prepare_result(results):
         #result_str_format += '{} {:3.2f}\n'.format(name.ljust(20), value)
   
     # '{:20} {:3.2f}'.format(nombre, mensajes)
-  return result_str_format
+    return result_str_format
 
