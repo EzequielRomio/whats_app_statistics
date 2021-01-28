@@ -11,7 +11,7 @@ def join_up_smaller_values(msgs_results):
 
     percents = [(msgs[1] * 100) / total_values for msgs in msgs_results]
     
-    names = ''
+    names = 'LOS PORCENTAJES MENORES A 5\n\nFUERON AGRUPADOS AQUÍ:\n\n'
     value = 0
     result_list = []
     low_percent_flag = False
