@@ -7,7 +7,7 @@ import show_results_script
 
 
 def load_chat_file():
-    chat_file = filedialog.askopenfilename(filetypes=[('Archivos de Texto', '.txt')])
+    chat_file = filedialog.askopenfilename(title="Seleccione un archivo", filetypes=[('Archivos de Texto', '.txt')])
 
     return chat_file
 
