@@ -5,14 +5,22 @@ from tkinter import filedialog
 import str_helpers
 import show_results_script
 
+
 def load_chat_file():
     chat_file = filedialog.askopenfilename(filetypes=[('Archivos de Texto', '.txt')])
 
     return chat_file
 
+
 def wrong_file_format_alert():
     message = "El archivo seleccionado no posee formato de chat de WhatsApp"
     messagebox.showwarning(title="Ocurrió un problema", message=message)
+
+
+def show_multimedia_warning():
+    message = "Los archivos multimedia tales como audios o videos fueron omitidos."
+    messagebox.showinfo(title="Archivos Multimedia", message=message)
+
 
 def calculate_msgs(chat_file):
     with codecs.open(chat_file, 'r', encoding='utf-8', errors='ignore') as f:
@@ -62,6 +70,7 @@ def button_action(window, start_button):
 
 
     msgs_results = check_contact_list(msgs_results)
+    show_multimedia_warning()
 
     sorted_msgs = sorted(msgs_results.items(), key=lambda x: x[1], reverse=True)
     
